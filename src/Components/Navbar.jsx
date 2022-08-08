@@ -17,6 +17,9 @@ export default function Navbar() {
                         <li className="nav-item mx-2">
                             <Link className="nav-a text-decoration-none text-white" aria-current="page" to="/Firebase">FirebaseAuth</Link>
                         </li>
+                        <li className="nav-item mx-2">
+                            <Link className="nav-a text-decoration-none text-white" aria-current="page" to="/Ecommerce">Ecommerce</Link>
+                        </li>
                     </ul>
                 </div>
             </div>
