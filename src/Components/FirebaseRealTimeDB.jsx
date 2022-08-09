@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import '../Stylesheet/FirebaseAuth.css'
-import '../Stylesheet/InputControl.css'
+// import '../Stylesheet/FirebaseAuth.css'
+// import '../Stylesheet/InputControl.css'
 import swal from 'sweetalert';
 
 export default function FirebaseRealTimeDB() {
@@ -71,12 +71,14 @@ export default function FirebaseRealTimeDB() {
   }
 
   return (
-    <div className='myContainer border border-dark'>
-      <form method='POST' onSubmit={handleForm}>
-        <legend>Submitted on firebase</legend>
-        <div className=' row'>
-          <div className='col-6 input_container'>
+    <div className='bg-violet-600 h-screen flex justify-center items-center'>
+      <form method='POST' className='border rounded-xl px-4 py-5 mx-2' onSubmit={handleForm}>
+        <legend className='text-xl text-center text-white font-bold'>Submitted on firebase</legend>
+        <div className='flex mb-1'>
+          <div className='m-2'>
+            <label className='block pointer-events-none text-white'>First Name</label>
             <input
+              className='py-1 px-2 rounded-sm w-full'
               type="text"
               name="fname"
               autoComplete='off'
@@ -84,32 +86,35 @@ export default function FirebaseRealTimeDB() {
               value={user.fname}
               onChange={getData}
             />
-            <label>First Name</label>
           </div>
-          <div className='col-6 input_container'>
+          <div className='m-2'>
+            <label className='block pointer-events-none text-white'>Last Name</label>
             <input
+              className='py-1 px-2 rounded-sm w-full'
               type="text"
               name="lname"
               autoComplete='off'
               required
               value={user.lname}
               onChange={getData} />
-            <label>Last Name</label>
           </div>
         </div>
-        <div className='row d-flex'>
-          <div className='col-6 input_container'>
+        <div className='flex mb-1'>
+          <div className=' m-2 '>
+            <label className='block pointer-events-none text-white'>Email ID</label>
             <input
+              className='py-1 px-2 rounded-sm w-full'
               type="email"
               name="email"
               autoComplete='off'
               required
               value={user.email}
               onChange={getData} />
-            <label>Email ID</label>
           </div>
-          <div className='col-6 input_container'>
+          <div className=' m-2'>
+            <label className='block pointer-events-none text-white'>Phone No.</label>
             <input
+              className='py-1 px-2 rounded-sm w-full'
               type="tel"
               name="phone"
               autoComplete='off'
@@ -119,25 +124,26 @@ export default function FirebaseRealTimeDB() {
               maxLength={10}
               minLength={10}
             />
-            <label>Phone No.</label>
           </div>
         </div>
-        <div className="row">
-          <div className='col-12 textarea_container p-0'>
+        <div className="flex mb-1">
+          <div className=' w-full m-2'>
+            <label className='block pointer-events-none text-white'>Address</label>
             <textarea
+              className='resize-none py-1 px-2 rounded-sm w-full'
               type='text'
               name="address"
-              style={{ resize: "none" }}
               autoComplete='off'
               required
               value={user.address}
               onChange={getData}></textarea>
-            <label>Address</label>
           </div>
         </div>
-        <button type='submit' className='btn btn-primary mt-2'>
-          Submit
-        </button>
+        <div className="flex">
+          <button type='submit' className='bg-blue-600 text-white py-2 px-4 rounded-lg transition-shadow hover:shadow-lg ml-2'>
+            Submit
+          </button>
+        </div>
       </form>
     </div >
   )
