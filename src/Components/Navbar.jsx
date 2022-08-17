@@ -13,6 +13,7 @@ export default function Navbar() {
                     <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
                         <Link to="/API" class="mr-5 cursor-pointer">API</Link>
                         <Link to="/Firebase" class="mr-5 cursor-pointer">FirebaseAuth</Link>
+                        <Link to="/sendg" class="mr-5 cursor-pointer">SendGrid</Link>
                         <Link to="/Ecommerce" class="mr-5 cursor-pointer">Ecommerce</Link>
                     </nav>
                     <button class="inline-flex items-center bg-blue-500 border-0 py-1 px-3 focus:outline-none hover:bg-blue-400 rounded text-white mt-4 md:mt-0">Button

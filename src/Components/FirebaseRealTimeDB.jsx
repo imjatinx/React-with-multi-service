@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-// import '../Stylesheet/FirebaseAuth.css'
-// import '../Stylesheet/InputControl.css'
 import swal from 'sweetalert';
 
 export default function FirebaseRealTimeDB() {
@@ -65,7 +63,7 @@ export default function FirebaseRealTimeDB() {
           'Something went wrong...',
           "warning"
         )
-      } console.log("response status code ===> ", res);
+      }
     })
 
   }
@@ -73,7 +71,7 @@ export default function FirebaseRealTimeDB() {
   return (
     <div className='bg-violet-600 h-screen flex justify-center items-center'>
       <form method='POST' className='border rounded-xl px-4 py-5 mx-2' onSubmit={handleForm}>
-        <legend className='text-xl text-center text-white font-bold'>Submitted on firebase</legend>
+        <legend className='text-xl text-center text-white font-bold'>Submit on firebase</legend>
         <div className='flex mb-1'>
           <div className='m-2'>
             <label className='block pointer-events-none text-white'>First Name</label>

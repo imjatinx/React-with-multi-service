@@ -20,7 +20,7 @@ export default function About() {
                 <h1 className='text-center underline text-3xl select-none'>Blogs</h1>
                 <div class="container mx-auto">
                     <div class="py-4">
-                        <div class="flex flex-wrap">
+                        <div class="flex flex-wrap justify-center">
                             {
                                 data.map((element, key) => {
 
@@ -28,7 +28,7 @@ export default function About() {
                                     const { id, avatar_url, html_url, login } = element;
                                     return (
                                         <div key={id} className="h-full border bg-white shadow-lg shad rounded-lg overflow-hidden m-2">
-                                            <img className="lg:h-48 md:h-36 w-full object-cover object-center" src={avatar_url} alt="blog" />
+                                            <img className="lg:h-48 md:h-36 sm:h-10 w-full object-cover object-center" src={avatar_url} alt="blog" />
 
                                             <div className="p-6">
                                                 <h1 className="title-font text-lg font-medium text-black mb-3">{login}</h1>
