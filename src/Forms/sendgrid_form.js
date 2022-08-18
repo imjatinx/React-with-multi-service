@@ -1,1 +1,3 @@
-const client = require("@sendgrid/mail")
+// const client = require("@sendgrid/mail")
+
+console.log(postData);

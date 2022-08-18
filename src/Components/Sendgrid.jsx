@@ -27,30 +27,37 @@ export default function Sendgrid() {
     const handleForm = (event) => {
         event.preventDefault();
 
-        const res = fetch(''
-        )
-        res.then(res => {
-            if (res.ok === true) {
-                setUser({
-                    fname: '',
-                    lname: '',
-                    email: '',
-                    phone: '',
-                    address: ''
-                })
-                swal(
-                    'Successfully',
-                    'Mail has been sended',
-                    "success"
-                )
-            } else if (res.ok === false) {
-                swal(
-                    'Try Later',
-                    'Something went wrong...',
-                    "warning"
-                )
-            }
-        })
+        const { fname, lname, email, phone, address } = user;
+
+        const postData = { fname, lname, email, phone, address };
+        
+        console.log(postData);
+        
+        const res = axios.post('../Forms/sendgrid_form.js', postData)
+
+        // const res = axios.post('../Forms/sendgrid_form.js', postData)
+        // res.then(res => {
+        //     if (res.ok === true) {
+        //         setUser({
+        //             fname: '',
+        //             lname: '',
+        //             email: '',
+        //             phone: '',
+        //             address: ''
+        //         })
+        //         swal(
+        //             'Successfully',
+        //             'Mail has been sended',
+        //             "success"
+        //         )
+        //     } else if (res.ok === false) {
+        //         swal(
+        //             'Try Later',
+        //             'Something went wrong...',
+        //             "warning"
+        //         )
+        //     }
+        // })
 
     }
 
