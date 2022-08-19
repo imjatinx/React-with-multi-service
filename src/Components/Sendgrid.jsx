@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import swal from 'sweetalert';
-import axios from "axios";
+import React, { useState } from 'react';
+import axios from 'axios';
+import Swal from 'sweetalert';
 
 export default function Sendgrid() {
 
@@ -15,8 +15,10 @@ export default function Sendgrid() {
 
     let name, value;
     const getData = (event) => {
+
         // get the name of field on onChange
         name = event.target.name;
+
         // get the value of field on onChange
         value = event.target.value;
 
@@ -27,38 +29,13 @@ export default function Sendgrid() {
     const handleForm = (event) => {
         event.preventDefault();
 
+        // destructuring the object into variable
         const { fname, lname, email, phone, address } = user;
 
         const postData = { fname, lname, email, phone, address };
-        
-        console.log(postData);
-        
-        const res = axios.post('../Forms/sendgrid_form.js', postData)
 
-        // const res = axios.post('../Forms/sendgrid_form.js', postData)
-        // res.then(res => {
-        //     if (res.ok === true) {
-        //         setUser({
-        //             fname: '',
-        //             lname: '',
-        //             email: '',
-        //             phone: '',
-        //             address: ''
-        //         })
-        //         swal(
-        //             'Successfully',
-        //             'Mail has been sended',
-        //             "success"
-        //         )
-        //     } else if (res.ok === false) {
-        //         swal(
-        //             'Try Later',
-        //             'Something went wrong...',
-        //             "warning"
-        //         )
-        //     }
-        // })
-
+        axios.post('../.netlify/functions/sendgrid-testing-form/sendgrid-testing-form.js', postData)
+        
     }
 
     return (
@@ -139,30 +116,3 @@ export default function Sendgrid() {
         </div >
     )
 }
-
-
-// const handleSubmit = (event) => {
-
-//     event.preventDefault();
-//     const postData = { username, email, message, mob, area, domain, ref };
-
-//     axios.post('../.netlify/functions/contactform', postData, setloading(true)).then(response => {
-//         setloading(false);
-//         Swal.fire(
-//             'Form Submitted Successfully !',
-//             'We will get back you Soon!',
-//             'success'
-//         )
-
-//         // reseting form values
-//         event.target.reset();
-
-//     }).catch(error => {
-//         setloading(false);
-//         Swal.fire({
-//             icon: 'error',
-//             title: 'Oops...',
-//             text: 'Something went wrong! Please Try Again Later or Check your Internet Connection',
-//         })
-//     });
-// }
