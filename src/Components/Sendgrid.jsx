@@ -36,6 +36,7 @@ export default function Sendgrid() {
 
         const res = await axios.post('../.netlify/functions/sendgrid-testing-form', postData)
         res.then(() => {
+            event.reset();
             swal(
                 'Successfully',
                 'Data send via Sendgrid',
