@@ -4,7 +4,7 @@ function sendEmail(sgMail, fname, lname, email, phone, address, senderEmail, rec
   return new Promise((fulfill, reject) => {
     const mailBody = {
       from: {
-        // email: senderEmail,
+        email: senderEmail,
         name: senderName
       },
       subject: `Automation Mail | ${senderName}`,
