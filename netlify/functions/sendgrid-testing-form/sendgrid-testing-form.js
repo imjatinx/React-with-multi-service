@@ -19,7 +19,7 @@ function sendEmail(sgMail, fname, lname, email, phone, address, senderEmail, rec
   })
 }
 
-exports.handler = async function (event, context) {
+exports.handler = async (event, context) => {
 
   const {
     REACT_APP_SENDGRID_KEY,
