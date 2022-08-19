@@ -34,7 +34,7 @@ export default function Sendgrid() {
 
         const postData = { fname, lname, email, phone, address };
 
-        axios.post('../.netlify/functions/sendgrid-testing-form/sendgrid-testing-form.js', postData)
+        axios.post('../netlify/functions/sendgrid-testing-form/sendgrid-testing-form.js', postData)
 
     }
 
