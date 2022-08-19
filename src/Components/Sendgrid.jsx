@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-// import swal from 'sweetalert';
+import swal from 'sweetalert';
 
 export default function Sendgrid() {
 
@@ -35,6 +35,19 @@ export default function Sendgrid() {
         const postData = { fname, lname, email, phone, address };
 
         axios.post('../.netlify/functions/sendgrid-testing-form', postData)
+            .then(res => {
+                swal(
+                    'Successfully',
+                    'Data saved on firebase',
+                    "success"
+                )
+            }).catch(err => {
+                swal(
+                    'Try Later',
+                    'Something went wrong...',
+                    "warning"
+                )
+            })
 
     }
 

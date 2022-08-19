@@ -9,7 +9,7 @@ function sendEmail(sgMail, fname, lname, email, phone, address, senderEmail, rec
       },
       subject: `sendgrid automation testing Mail | ${senderName}`,
       to: recieverEmail,
-      html: `Name : ${fname, ' ', lname} <br/> Email : ${email} <br/> Phone : ${phone} <br/> Address : ${address}`
+      html: `Name : ${fname, lname} <br/> Email : ${email} <br/> Phone : ${phone} <br/> Address : ${address}`
     }
 
     sgMail
@@ -49,15 +49,9 @@ exports.handler = function (event, callback) {
     REACT_APP_SENDGRID_RECIEVER_EMAIL,
     REACT_APP_SENDGRID_SENDER_NAME
   )
-  .then(res=>{
-    console.log("response ===> ", res);
-  })
-  .catch(err=>{
-    console.log("error ===> ", err);
-  })
-    // .then(response => callback({
-    //   statusCode: response.statusCode
-    // })
-    // )
-    // .catch(err => callback("Error is ===> ",err))
+    .then(response => callback({
+      statusCode: response.statusCode
+    })
+    )
+    .catch(err => callback("Error is ===> ", err))
 }
