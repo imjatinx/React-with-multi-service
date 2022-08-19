@@ -1,6 +1,7 @@
 const sgMail = require("@sendgrid/mail")
 
-const sendEmail = (sgMail, fname, lname, email, phone, address, senderEmail, recieverEmail, senderName)=> {
+function sendEmail(sgMail, fname, lname, email, phone, address, senderEmail, recieverEmail, senderName) {
+  return new Promise((fulfill, reject) => {
     const mailBody = {
       from: {
         email: senderEmail,
@@ -13,27 +14,10 @@ const sendEmail = (sgMail, fname, lname, email, phone, address, senderEmail, rec
 
     sgMail
       .send(mailBody)
-      .then(response => console.log("Response ===> ", response))
-      .catch(error => console.log("Error ====> ", error))
+      .then(response => fulfill("response ====> ", response))
+      .catch(error => reject("Error ====> ", error))
+  })
 }
-// function sendEmail(sgMail, fname, lname, email, phone, address, senderEmail, recieverEmail, senderName) {
-//   return new Promise((fulfill, reject) => {
-//     const mailBody = {
-//       from: {
-//         email: senderEmail,
-//         name: senderName
-//       },
-//       subject: `Automation Mail | ${senderName}`,
-//       to: recieverEmail,
-//       html: `Name : ${fname} ${lname} <br/> Email : ${email} <br/> Phone : ${phone} <br/> Address : ${address}`
-//     }
-
-//     sgMail
-//       .send(mailBody)
-//       .then(response => fulfill(response))
-//       .catch(error => reject("Error ====> ", error))
-//   })
-// }
 
 exports.handler = function (event) {
 
