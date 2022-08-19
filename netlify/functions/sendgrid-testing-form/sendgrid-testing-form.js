@@ -53,5 +53,5 @@ exports.handler = function (event, callback) {
       statusCode: response.statusCode
     })
     )
-    .catch(err => callback(err))
+    .catch(err => callback("Error is ===> ",err))
 }
