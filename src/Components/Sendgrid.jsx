@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import Swal from 'sweetalert';
+// import swal from 'sweetalert';
 
 export default function Sendgrid() {
 
@@ -35,7 +35,7 @@ export default function Sendgrid() {
         const postData = { fname, lname, email, phone, address };
 
         axios.post('../.netlify/functions/sendgrid-testing-form/sendgrid-testing-form.js', postData)
-        
+
     }
 
     return (
