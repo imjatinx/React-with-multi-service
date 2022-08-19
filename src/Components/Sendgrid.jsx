@@ -26,7 +26,7 @@ export default function Sendgrid() {
         setUser({ ...user, [name]: value })
     }
 
-    const handleForm = (event) => {
+    const handleForm = async (event) => {
         event.preventDefault();
 
         // destructuring the object into variable
@@ -34,14 +34,15 @@ export default function Sendgrid() {
 
         const postData = { fname, lname, email, phone, address };
 
-        axios.post('../.netlify/functions/sendgrid-testing-form', postData)
-            .then(res => {
-                swal(
-                    'Successfully',
-                    'Data saved on firebase',
-                    "success"
-                )
-            }).catch(err => {
+        const res = await axios.post('../.netlify/functions/sendgrid-testing-form', postData)
+        res.then(() => {
+            swal(
+                'Successfully',
+                'Data send via Sendgrid',
+                "success"
+            )
+        })
+            .catch(err => {
                 swal(
                     'Try Later',
                     'Something went wrong...',

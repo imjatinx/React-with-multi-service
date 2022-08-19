@@ -4,20 +4,18 @@ function sendEmail(sgMail, fname, lname, email, phone, address, senderEmail, rec
   return new Promise((fulfill, reject) => {
     const mailBody = {
       from: {
-        email: senderEmail,
+        // email: senderEmail,
         name: senderName
       },
-      subject: `sendgrid automation testing Mail | ${senderName}`,
+      subject: `Automation Mail | ${senderName}`,
       to: recieverEmail,
       html: `Name : ${fname} ${lname} <br/> Email : ${email} <br/> Phone : ${phone} <br/> Address : ${address}`
     }
 
     sgMail
       .send(mailBody)
-      .then(([response, mailBody]) => {
-        fulfill(response)
-      })
-      .catch(error => reject(error))
+      .then(response => fulfill(response))
+      .catch(error => reject("Error ====> ", error))
   })
 }
 
