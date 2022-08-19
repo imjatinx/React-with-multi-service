@@ -49,9 +49,15 @@ exports.handler = function (event, callback) {
     REACT_APP_SENDGRID_RECIEVER_EMAIL,
     REACT_APP_SENDGRID_SENDER_NAME
   )
-    .then(response => callback({
-      statusCode: response.statusCode
-    })
-    )
-    .catch(err => callback("Error is ===> ",err))
+  .then(res=>{
+    console.log("response ===> ", res);
+  })
+  .catch(err=>{
+    console.log("error ===> ", err);
+  })
+    // .then(response => callback({
+    //   statusCode: response.statusCode
+    // })
+    // )
+    // .catch(err => callback("Error is ===> ",err))
 }
