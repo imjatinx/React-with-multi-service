@@ -1,4 +1,4 @@
-const sgMail = require("@sendgrid/mail")
+import sgMail, { setApiKey } from "@sendgrid/mail"
 
 function sendEmail(sgMail, fname, lname, email, phone, address, senderEmail, recieverEmail, senderName) {
   return new Promise((fulfill, reject) => {
@@ -19,7 +19,7 @@ function sendEmail(sgMail, fname, lname, email, phone, address, senderEmail, rec
   })
 }
 
-exports.handler = async (event, context) => {
+export async function handler(event, context) {
 
   const {
     REACT_APP_SENDGRID_KEY,
@@ -35,7 +35,7 @@ exports.handler = async (event, context) => {
   const phone = body.phone
   const address = body.address
 
-  sgMail.setApiKey(REACT_APP_SENDGRID_KEY)
+  setApiKey(REACT_APP_SENDGRID_KEY)
 
   sendEmail(
     sgMail,

@@ -10,14 +10,14 @@ function Ecommerce() {
     const productAPI = 'http://localhost:1337/api/products?populate=*';
 
     const config = {
-      method: 'get',
+      method: 'post',
       url: productAPI,
       headers: {
         'Authorization': 'Bearer 531558344948a8a8e8327dc9432b20822f02e0fe7da49cd242546b33bd511544ecd4fd0380bc4c3d3173c551c9a99700164bfe2b279f8fc32cffc518c6cb67cc9e3392c84acb7fb2145e9d698b0ca31378a790e6fa86aa62f02a3081f0c17f1ef9f64b5b4129b5800c545fab6a2d8968ead2daead9f5254d34a20efdb22f70ca'
       }
     }
 
-    const response = await axios.get(config)
+    const response = await axios.post(config)
     response.then(res => {
       console.log(res);
     })
