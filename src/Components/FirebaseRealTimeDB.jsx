@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { signInWithGoogle } from '../firebase';
 import swal from 'sweetalert';
 
 export default function FirebaseRealTimeDB() {
@@ -24,25 +25,14 @@ export default function FirebaseRealTimeDB() {
   }
 
   const handleForm = (event) => {
+    const url = `https://react-3b6d8-default-rtdb.firebaseio.com/user.json?auth=${process.env.REACT_APP_FIREBASE_AUTH}`;
     event.preventDefault();
 
     const { fname, lname, email, phone, address } = user;
-    const res = fetch(
-      'https://fir-3fbe7-default-rtdb.firebaseio.com/user.json',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          fname,
-          lname,
-          email,
-          phone,
-          address
-        })
-      }
-    )
+    const res = fetch(url, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ fname, lname, email, phone, address })
+    })
     res.then(res => {
       if (res.ok === true) {
         setUser({
@@ -65,11 +55,10 @@ export default function FirebaseRealTimeDB() {
         )
       }
     })
-
   }
 
   return (
-    <div className='bg-violet-600 h-screen flex justify-center items-center'>
+    <div className='bg-violet-600 h-screen flex justify-center items-center flex-col'>
       <form method='POST' className='border rounded-xl px-4 py-5 mx-2' onSubmit={handleForm}>
         <legend className='text-xl text-center text-white font-bold'>Submit on firebase</legend>
         <div className='flex mb-1'>
@@ -143,6 +132,11 @@ export default function FirebaseRealTimeDB() {
           </button>
         </div>
       </form>
+      <span className='text-white font-bold'>OR</span>
+      <button onClick={signInWithGoogle} type="button" class="text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2" >
+        <svg class="w-4 h-4 mr-2 -ml-1" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512"><path fill="currentColor" d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"></path></svg>
+        Sign in with Google
+      </button>
     </div >
   )
 }

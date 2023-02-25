@@ -11,7 +11,6 @@ import Sendgrid from './Components/Sendgrid';
 // SendGrid API Key  
 // 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
 
-
 function App() {
   return (
     <>
